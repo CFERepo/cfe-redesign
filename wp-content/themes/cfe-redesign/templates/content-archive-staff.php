@@ -2,9 +2,6 @@
 
   <?php
 
-  $priority = array();
-  $other = array();
-  
   $current_category = get_category( get_query_var( 'cat' ) );
 
   $terms = array();
@@ -21,6 +18,9 @@
 
 
   foreach($terms as $term) {
+
+    $priority = array();
+    $other = array();
 
     $query = array(
       'post_type'     => 'staff',
