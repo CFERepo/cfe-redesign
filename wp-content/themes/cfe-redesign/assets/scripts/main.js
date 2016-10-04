@@ -52,7 +52,15 @@
 
         });
 
-        $('.category-parent a, .cfe-nav > li > a').click(function() { return false; });
+        $('.category-parent a, .cfe-nav > li > a, .standard-menu > div > ul > li > a').click(function() { return false; });
+
+        $( ".standard-menu > div > ul > li" ).hover(
+          function() {
+            $(this).addClass('menu-open');
+          }, function() {
+            $(this).removeClass('menu-open');
+          }
+        );
 
       },
       finalize: function() {

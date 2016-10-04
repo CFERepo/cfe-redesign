@@ -26,71 +26,75 @@ $events = new WP_Query(array(
 
 <div class="col-sm-4">
 
-	<?php
+	<div class="sidebar-wrapper">
 
-	if(!isset($featured)) {
-		$post = prepare_featured_content();
-	} else {
-		$post = $featured;
-	}
-	
-	if($post) {
-		setup_postdata($post);
+		<?php
 
-		$excerpt = get_the_excerpt( $post );
-
-		$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'featured-article-right' );
-
-		if($image[0]) {
-			$image = $image[0];
+		if(!isset($featured)) {
+			$post = prepare_featured_content();
 		} else {
-			$image = false;
+			$post = $featured;
 		}
+		
+		if($post) {
+			setup_postdata($post);
 
-	?>
+			$excerpt = get_the_excerpt( $post );
 
-	<div class="sidebar-block featured-article">
-		<div class="image">
-			<img src="<?php echo $image; ?>" />
-		</div>
+			$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'featured-article-right' );
 
-		<h2 class="entry-title">
-			<a href="<?php echo get_permalink( $post->ID ); ?>"><?php the_title(); ?></a>
-		</h2>
+			if($image[0]) {
+				$image = $image[0];
+			} else {
+				$image = false;
+			}
 
-		<div class="excerpt entry-content">
-			<p><?php echo $excerpt; ?></p>
-		</div>
-	</div>
+		?>
 
-	<?php } ?>
-
-
-	<?php if( $events->have_posts() ): ?>
-		<div class="sidebar-block events">
+		<div class="sidebar-block featured-article">
+			<div class="image">
+				<img src="<?php echo $image; ?>" />
+			</div>
 
 			<h2 class="entry-title">
-				<a href="/category/whats-cfe/events/">Events</a>
+				<a href="<?php echo get_permalink( $post->ID ); ?>"><?php the_title(); ?></a>
 			</h2>
 
-			<ul>
-			<?php while( $events->have_posts() ) : $events->the_post(); 
-				
-				?>
-				<li>
-					<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-					<time class="event""><?= get_field('event_date'); ?></time>
-				</li>
-			<?php endwhile; ?>
-			</ul>
+			<div class="excerpt entry-content">
+				<p><?php echo $excerpt; ?></p>
+			</div>
 		</div>
-	<?php endif; ?>
 
-	<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+		<?php } ?>
 
-	<?php if($category->term_id == 105) { ?>
-		<?php dynamic_sidebar('sidebar-tom'); ?>
-	<?php } ?>
+
+		<?php if( $events->have_posts() ): ?>
+			<div class="sidebar-block events">
+
+				<h2 class="entry-title">
+					<a href="/category/whats-cfe/events/">Events</a>
+				</h2>
+
+				<ul>
+				<?php while( $events->have_posts() ) : $events->the_post(); 
+					
+					?>
+					<li>
+						<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+						<time class="event""><?= get_field('event_date'); ?></time>
+					</li>
+				<?php endwhile; ?>
+				</ul>
+			</div>
+		<?php endif; ?>
+
+		<?php wp_reset_query();	 // Restore global post data stomped by the_post(). ?>
+
+		<?php if($category->term_id == 105) { ?>
+			<?php dynamic_sidebar('sidebar-tom'); ?>
+		<?php } ?>
+
+	</div>
 
 
 </div>
