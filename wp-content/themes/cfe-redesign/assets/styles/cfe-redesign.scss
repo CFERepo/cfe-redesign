@@ -922,13 +922,13 @@ article .image.inset {
     }
 }
 
-.sidebar-wrapper {
-	border-left: 1px solid #000000;
-	padding-left: 15px;
-}
-
 /* Small Devices, Tablets */
 @media only screen and (min-width : 768px) {
+
+	.sidebar-wrapper {
+		border-left: 1px solid #000000;
+		padding-left: 15px;
+	}
 
 	.standard-menu {
 		display: block;
