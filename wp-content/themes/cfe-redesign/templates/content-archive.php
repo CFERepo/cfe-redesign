@@ -97,4 +97,6 @@
   </div>
 </div>
 
-<?php get_template_part('templates/sidebar', 'default'); ?>
+<?php if (!get_field('hide_sidebar')) : ?>
+  <?php get_template_part('templates/sidebar', 'default'); ?>
+<?php endif; ?>
