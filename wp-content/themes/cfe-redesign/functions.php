@@ -47,7 +47,9 @@ function prepare_featured_content() {
     $posts = get_field('featured_articles', $post->ID);
 
     if($posts) {
-      $post = $posts[0];
+
+      $random = array_rand($posts);
+      $post = $posts[$random];
 
       return $post;
     } else {
