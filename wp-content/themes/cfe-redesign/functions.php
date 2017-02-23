@@ -128,7 +128,12 @@ function search_content_bucket($term_id = false) {
     $features = get_field('featured_articles', $post->ID);
 
     if($features) {
-      return $features[0];
+
+      $random = array_rand($features);
+      
+      $selected = $features[$random];
+
+      return $selected;
     } else {
       return false;
     }
