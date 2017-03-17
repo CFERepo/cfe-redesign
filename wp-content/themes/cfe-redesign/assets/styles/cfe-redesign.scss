@@ -1217,6 +1217,24 @@ footer.content-info {
 		float: left;
 	}
 
+	.staff-listing {
+
+		article {
+
+			.image-preview {
+
+				img {
+				    width: auto;
+				    height: auto;
+				    max-height: 196px;
+				    max-width: 100%;
+				    margin: 0px auto;
+				}
+
+			}
+		}
+	}
+
 	body.archive {
 		article {
 			.entry-content {

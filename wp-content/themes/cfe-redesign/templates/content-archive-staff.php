@@ -96,7 +96,7 @@
         <article <?php post_class(); ?>>
 
           <div class="image-preview">
-              <?php the_post_thumbnail( 'article-preview-small' ); ?>
+              <?php the_post_thumbnail( 'article-preview-medium' ); ?>
           </div>
 
           <header class="<?php echo ($key ? 'standard' : 'pinned') ?>">
