@@ -737,7 +737,12 @@ body.single-staff {
 }
 
 article .image.inset {
-	    max-width: 400px;
+	    max-width: 300px;
+	    margin: 0px auto;
+}
+
+article .image.inset-left {
+	    max-width: 300px;
 	    margin: 0px auto;
 }
 
@@ -1354,6 +1359,13 @@ footer.content-info {
 			float: right;
 			margin: 25px;
 			margin-right: 0px;
+	}
+
+	article .image.inset-left {
+			float: left;
+			margin: 25px;
+			margin-left: 0px;
+			margin-top: 0px;
 	}
 
 

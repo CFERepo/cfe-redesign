@@ -12,12 +12,18 @@ if($post) {
 		$excerpt .= '...';
 	}
 
-	$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'landing' );
+	$alternativeImage = get_field('alternative_image');
 
-	if($image[0]) {
-		$image = $image[0];
+	if($alternativeImage) {
+		$image = $alternativeImage;
 	} else {
-		$image = false;
+		$image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), 'landing' );
+
+		if($image[0]) {
+			$image = $image[0];
+		} else {
+			$image = false;
+		}
 	}
 
 ?>

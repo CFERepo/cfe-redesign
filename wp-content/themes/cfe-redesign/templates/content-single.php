@@ -32,20 +32,36 @@ if(in_category('events')) {
 
       <?php 
 
-          if(get_post_type( get_the_ID() ) == 'staff') {
+          $post_type = get_post_type( get_the_ID() );
+
+          if($post_type == 'staff') {
             $size = 'square-large';
-            $style = 'inset';
           } else {
             $size = 'featured-article-top';
-            $style = 'featured-article-top';
           }
 
           $image = wp_get_attachment_image_src( get_post_thumbnail_id($post->ID), $size );
 
           if($image[0]) {
 
-            if($image[2] > $image[1] || $post->ID == 1675) {
+            if($post_type == 'staff') {
               $style = 'inset';
+            } else {
+              $style = 'featured-article-top';
+
+              $ratio = 1;
+
+              if($image[2] > $image[1]) {
+                $ratio = ($image[2] / $image[1]);
+              } else {
+                $ratio = ($image[1] / $image[2]);
+              }
+
+              $threshold = 0.1; // 10% out.
+
+              if($image[2] > $image[1] || $image[2] == $image[1] || $post->ID == 1675 || ($ratio-1) < $threshold) {
+                $style = 'inset-left';
+              }
             }
 
             $image = $image[0];
